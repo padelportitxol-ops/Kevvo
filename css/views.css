@@ -1,0 +1,1194 @@
+/* css/views.css - View-Specific Styles (Home, Details, Admin, Brackets, Dashboards) */
+
+/* ==========================================================================
+   VISTA DE INICIO (HOME VIEW)
+   ========================================================================== */
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    padding: 5rem 2rem;
+    margin-bottom: 3.5rem;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(100% 100% at 50% 0%, rgba(99, 91, 255, 0.12) 0%, rgba(204, 255, 0, 0.03) 60%, rgba(0, 0, 0, 0) 100%), rgba(17, 24, 39, 0.4);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(204, 255, 0, 0.35), rgba(99, 91, 255, 0.35), transparent);
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(204, 255, 0, 0.08);
+    color: var(--color-primary);
+    border: 1px solid rgba(204, 255, 0, 0.25);
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.05);
+}
+
+.hero-tag i {
+    width: 14px;
+    height: 14px;
+}
+
+.hero-title {
+    font-family: var(--font-headings);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.25rem;
+}
+
+.hero-title span {
+    background: linear-gradient(95deg, var(--color-primary) 10%, #99ff00 40%, #00f0ff 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(204, 255, 0, 0.25));
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+/* Stats */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin: 0 auto;
+    max-width: 600px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stat-val {
+    font-family: var(--font-headings);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Explorador y Filtros */
+.explorer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.explorer-title {
+    font-family: var(--font-headings);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.search-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-input-wrapper i,
+.search-input-wrapper svg {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+}
+
+.search-input-wrapper .form-input {
+    padding-left: 2.75rem;
+}
+
+/* Rejilla de Torneos ("Cuadritos") */
+.tournaments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.tournament-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: rgba(17, 24, 39, 0.55);
+    backdrop-filter: blur(12px);
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+    height: 100%;
+}
+
+.tournament-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(204, 255, 0, 0.25);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+}
+
+.t-card-banner {
+    height: 210px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-normal);
+}
+
+.tournament-card:hover .t-card-banner {
+    transform: scale(1.02);
+}
+
+.t-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1rem;
+}
+
+.t-card-title {
+    font-family: var(--font-headings);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.t-card-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 0.5rem 0;
+}
+
+.t-card-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.t-card-meta-item i {
+    color: var(--color-primary);
+    width: 16px;
+    height: 16px;
+}
+
+.t-card-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.t-card-slots-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.t-card-slots-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.t-card-slots-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.t-card-slots-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), #99ff00);
+    border-radius: 10px;
+    transition: width var(--transition-slow);
+}
+
+
+/* ==========================================================================
+   VISTA DE DETALLES DE TORNEO (TOURNAMENT VIEW) & ELIMINATORIAS (BRACKETS)
+   ========================================================================== */
+.tournament-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+@media (max-width: 992px) {
+    .tournament-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Detalles del evento - Alineación Inline Flex */
+.t-detail-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .t-detail-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.t-detail-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.t-detail-image-box {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.t-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.t-info-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.t-info-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(204, 255, 0, 0.05);
+    border: 1px solid rgba(204, 255, 0, 0.15);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.t-info-icon-wrapper i {
+    width: 20px;
+    height: 20px;
+}
+
+.t-info-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.t-info-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.t-info-value {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+}
+
+.t-detail-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Bracket Visualizer (Estilo Sportelia) */
+.bracket-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding: 1.5rem 0.5rem;
+}
+
+.bracket-container {
+    display: flex;
+    gap: 3.5rem;
+    min-width: 600px;
+    align-items: center;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.bracket-round {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 2rem;
+    height: 520px;
+    position: relative;
+}
+
+.bracket-match {
+    background: rgba(17, 24, 39, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 220px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s;
+}
+
+.bracket-match:hover {
+    border-color: rgba(204, 255, 0, 0.2);
+}
+
+.bracket-match-header {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.bracket-team-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.bracket-team-row.winner {
+    color: #ffffff;
+    font-weight: 600;
+    background: rgba(204, 255, 0, 0.02);
+}
+
+.bracket-team-row.winner .score {
+    color: var(--color-primary);
+}
+
+.bracket-team-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.bracket-team-row .score {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================================================
+   ESTILOS DE MODO DASHBOARD (PÁGINA SECUNDARIA COMPLETA)
+   ========================================================================== */
+
+body.dashboard-mode,
+html.dashboard-mode {
+    background-color: var(--bg-darker);
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+body.dashboard-mode .app-container {
+    height: 100vh !important;
+    overflow: hidden !important;
+}
+
+body.dashboard-mode .app-header,
+body.dashboard-mode .app-footer {
+    display: none !important; /* Ocultar cabecera y pie estándar en modo consola */
+}
+
+body.dashboard-mode #app-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Contenedor Principal del Dashboard */
+.dashboard-layout-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    height: 100vh;
+    width: 100%;
+    color: var(--text-main);
+    background: var(--bg-darker);
+}
+
+/* Barra Lateral Izquierda (Sidebar) */
+.dashboard-sidebar {
+    background: var(--bg-dark);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-headings);
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: #ffffff;
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+.sidebar-logo i {
+    color: var(--color-primary);
+    width: 22px;
+    height: 22px;
+}
+
+.sidebar-logo span span {
+    color: var(--color-primary);
+}
+
+.sidebar-user-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.user-card-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-card-role {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+/* Menú de Navegación Lateral */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex-grow: 1;
+}
+
+.sidebar-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: all var(--transition-fast);
+}
+
+.sidebar-menu-item i {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-menu-item:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,0.03);
+}
+
+.sidebar-menu-item:hover i {
+    transform: translateX(2px);
+}
+
+.sidebar-menu-item.active {
+    color: var(--text-dark);
+    background: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(204, 255, 0, 0.2);
+}
+
+.sidebar-menu-item.active i {
+    color: var(--text-dark);
+}
+
+/* Área de Trabajo Derecha (Workspace) */
+.dashboard-workspace {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Barra Superior del Workspace */
+.dashboard-topbar {
+    background: rgba(9, 13, 22, 0.5);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar-title {
+    font-family: var(--font-headings);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Panel de Contenido Desplazable */
+.dashboard-view-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background: radial-gradient(circle at 50% 0%, rgba(99, 91, 255, 0.05) 0%, rgba(5, 7, 12, 1) 70%);
+}
+
+/* ==========================================================================
+   INTERFAZ DE TABLA DE GESTIÓN DE TORNEOS (ADMIN)
+   ========================================================================== */
+
+.tournament-management-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.tournament-management-table th {
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tournament-management-table td {
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Responsive Dashboard Mode */
+@media (max-width: 992px) {
+    .dashboard-layout-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-sidebar {
+        display: none; /* En móviles se oculta o se usa overlay drawer */
+    }
+}
+
+/* Control de Visibilidad de Pestañas (Dashboards) */
+.t-tab-content {
+    display: none !important;
+}
+.t-tab-content.active {
+    display: block !important;
+}
+
+/* Rejilla de Columnas de Administración */
+.admin-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+@media (min-width: 1200px) {
+    .admin-layout {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 992px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mapa Visual de Pistas en Tiempo Real */
+.courts-grid-map {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.court-map-card {
+    position: relative;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    background: rgba(9, 13, 22, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+.court-map-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+.court-map-card.occupied::before {
+    background: var(--color-error);
+}
+.court-map-card.available::before {
+    background: var(--color-success);
+}
+.court-map-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg), 0 0 15px rgba(255, 255, 255, 0.02);
+}
+.court-map-card.occupied:hover {
+    border-color: rgba(239, 68, 68, 0.35);
+}
+.court-map-card.available:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+}
+.court-net-line {
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    margin: 0.75rem 0;
+}
+.court-badge-status {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.court-badge-status.occupied {
+    background: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+}
+.court-badge-status.available {
+    background: rgba(16, 185, 129, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* ==========================================================================
+   SOBREESCRITURAS DE TEMA CLARO (MODO DÍA: BLANCO Y AZUL)
+   ========================================================================== */
+
+/* Fondo del contenido del dashboard */
+html.light-theme .dashboard-view-content {
+    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.04) 0%, #f0f2f5 70%);
+}
+
+/* Brillo del fondo en la web pública */
+html.light-theme .bg-glow {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%);
+}
+html.light-theme .bg-glow-secondary {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* Hero Section */
+html.light-theme .hero-section {
+    background: radial-gradient(100% 100% at 50% 0%, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.02) 60%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.45);
+}
+
+/* Brackets del Torneo */
+html.light-theme .bracket-match {
+    background: rgba(255, 255, 255, 0.9);
+}
+html.light-theme .bracket-team-row.winner {
+    color: #1f2937;
+    background: rgba(59, 130, 246, 0.06);
+}
+html.light-theme .bracket-match-header {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Mapa de Pistas */
+html.light-theme .court-map-card {
+    background: rgba(255, 255, 255, 0.85);
+}
+html.light-theme .court-net-line {
+    border-top: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+/* Inputs y Selects */
+html.light-theme .form-input,
+html.light-theme .form-select,
+html.light-theme .form-textarea {
+    background: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #1f2937 !important;
+}
+html.light-theme .form-input:focus,
+html.light-theme .form-select:focus,
+html.light-theme .form-textarea:focus {
+    background: #ffffff !important;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Tablas */
+html.light-theme .tournament-management-table td {
+    color: #1f2937;
+}
+
+/* Solicitudes y Roster */
+html.light-theme [id$="-list-container"] .glass-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* ==========================================================================
+   NUEVAS SOBREESCRITURAS DE TEMA CLARO PARA DASHBOARDS Y LOGIN DE JUGADORES
+   ========================================================================== */
+
+/* Sobreescritura general de textos blancos en elementos del dashboard y login */
+html.light-theme .dashboard-workspace h1,
+html.light-theme .dashboard-workspace h2,
+html.light-theme .dashboard-workspace h3,
+html.light-theme .dashboard-workspace h4,
+html.light-theme .dashboard-workspace h5,
+html.light-theme .dashboard-workspace h6,
+html.light-theme .dashboard-workspace strong,
+html.light-theme .dashboard-workspace p,
+html.light-theme .dashboard-workspace code,
+html.light-theme .dashboard-workspace span:not(.badge):not(.partner-badge):not(.logo-highlight),
+html.light-theme .dashboard-workspace .metric-num,
+html.light-theme .dashboard-workspace .stat-val,
+html.light-theme .dashboard-workspace .topbar-title,
+html.light-theme .dashboard-sidebar .user-card-name,
+html.light-theme .dashboard-sidebar .sidebar-logo,
+html.light-theme .dashboard-sidebar .sidebar-logo span:not(.sidebar-logo span span) {
+    color: var(--text-main) !important;
+}
+
+/* Forzar color de texto secundario en etiquetas secundarias */
+html.light-theme .dashboard-workspace .text-muted,
+html.light-theme .dashboard-workspace span[style*="color: var(--text-muted)"],
+html.light-theme .dashboard-workspace span[style*="color:var(--text-muted)"] {
+    color: var(--text-muted) !important;
+}
+
+/* Barra superior en modo claro */
+html.light-theme .dashboard-topbar {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-theme .dashboard-topbar .topbar-title {
+    color: var(--text-main) !important;
+}
+
+/* Sidebar en modo claro */
+html.light-theme .dashboard-sidebar {
+    background: #f8fafc !important; /* Gris-azul extremadamente claro y premium */
+    border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Logo de sidebar en modo claro */
+html.light-theme .sidebar-logo {
+    color: var(--text-main) !important;
+}
+
+/* Tarjeta del usuario en sidebar */
+html.light-theme .sidebar-user-card {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border-color: rgba(0, 0, 0, 0.06) !important;
+}
+html.light-theme .user-card-name {
+    color: var(--text-main) !important;
+}
+
+/* Items del menú sidebar en modo claro */
+html.light-theme .sidebar-menu-item {
+    color: var(--text-muted) !important;
+}
+html.light-theme .sidebar-menu-item:hover {
+    color: var(--color-primary) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+}
+html.light-theme .sidebar-menu-item.active {
+    color: #000000 !important;
+    background: var(--color-primary) !important; /* Azul Premium */
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25) !important;
+}
+html.light-theme .sidebar-menu-item.active i {
+    color: #000000 !important;
+}
+
+/* Pantalla de login / Registro (Auth Screens) */
+.auth-viewport-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    width: 100%;
+    position: relative;
+    padding: 1rem 0;
+}
+
+html.light-theme .auth-viewport-wrapper {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, #f0f2f5 80%) !important;
+}
+html.light-theme .auth-viewport-wrapper h3,
+html.light-theme .auth-viewport-wrapper p,
+html.light-theme .auth-viewport-wrapper a:not(.btn),
+html.light-theme .auth-viewport-wrapper label,
+html.light-theme .auth-viewport-wrapper li strong {
+    color: var(--text-main) !important;
+}
+html.light-theme .auth-viewport-wrapper a:not(.btn):hover {
+    color: var(--color-primary) !important;
+}
+html.light-theme .auth-viewport-wrapper .glass-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Tablas y filas en modo claro */
+html.light-theme #app-content tr,
+html.light-theme #app-content thead tr,
+html.light-theme .tournament-management-table th {
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-theme .tournament-management-table th {
+    color: var(--text-muted) !important;
+}
+html.light-theme .tournament-management-table tr:hover,
+html.light-theme #app-content tr:hover {
+    background: rgba(0, 0, 0, 0.015) !important;
+}
+
+/* Forzar texto oscuro en elementos con estilos en línea de color blanco en modo claro */
+html.light-theme #app-content [style*="color: #ffffff"],
+html.light-theme #app-content [style*="color:#ffffff"],
+html.light-theme #app-content [style*="color: #ffffff;"],
+html.light-theme #app-content [style*="color:#ffffff;"] {
+    color: var(--text-main) !important;
+}
+
+/* Títulos y estadísticas de página principal en modo claro */
+html.light-theme .stat-val,
+html.light-theme .explorer-title,
+html.light-theme .t-card-title {
+    color: var(--text-main) !important;
+}
+
+/* Botón secundario en modo claro (Gris oscuro y letra blanca para contraste premium) */
+html.light-theme .btn-secondary {
+    background: #4b5563 !important;
+    color: #ffffff !important;
+    border-color: #4b5563 !important;
+}
+html.light-theme .btn-secondary:hover {
+    background: #374151 !important;
+    border-color: #374151 !important;
+    color: #ffffff !important;
+}
+
+/* Placeholders legibles en modo claro */
+html.light-theme .form-input::placeholder,
+html.light-theme .form-select::placeholder,
+html.light-theme .form-textarea::placeholder {
+    color: #9ca3af !important;
+}
+
+/* Insignias de alta legibilidad y contraste en modo claro (sólidos y letra blanca) */
+html.light-theme .badge-gold {
+    background: #d97706 !important;
+    color: #ffffff !important;
+    border-color: #d97706 !important;
+}
+html.light-theme .badge-silver {
+    background: #6b7280 !important;
+    color: #ffffff !important;
+    border-color: #6b7280 !important;
+}
+html.light-theme .badge-bronze {
+    background: #b45309 !important;
+    color: #ffffff !important;
+    border-color: #b45309 !important;
+}
+html.light-theme .badge-open {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+}
+html.light-theme .badge-full {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    border-color: #ef4444 !important;
+}
+
+/* Tarjetas de torneos en modo claro (Fondo azul oscuro premium y textos blancos para legibilidad óptima) */
+html.light-theme .tournament-card {
+    background: rgba(26, 36, 57, 0.9) !important;
+    border-color: rgba(59, 130, 246, 0.25) !important;
+}
+html.light-theme .tournament-card .t-card-title {
+    color: #ffffff !important;
+}
+html.light-theme .tournament-card p {
+    color: #e2e8f0 !important;
+}
+html.light-theme .tournament-card .t-card-meta-item {
+    color: #cbd5e1 !important;
+}
+html.light-theme .tournament-card .t-card-meta-item i {
+    color: #3b82f6 !important;
+}
+html.light-theme .tournament-card .t-card-slots-label {
+    color: #94a3b8 !important;
+}
+
+/* Notificaciones emergentes (toasts) legibles con letra oscura en modo claro */
+html.light-theme .toast {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-top-color: rgba(0, 0, 0, 0.08) !important;
+    border-right-color: rgba(0, 0, 0, 0.08) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+    color: var(--text-main) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Cabecera pública en modo claro para evitar logo negro sobre fondo oscuro */
+html.light-theme .app-header {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-theme .app-header .logo-text {
+    color: var(--text-main) !important;
+}
+html.light-theme .app-header .nav-item:not(.active) {
+    color: var(--text-muted) !important;
+}
+html.light-theme .app-header .nav-item.active {
+    color: #000000 !important; /* Texto negro sobre fondo azul de menú activo */
+    background: var(--color-primary) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2) !important;
+}
+html.light-theme .app-header .logo-icon {
+    color: #000000 !important; /* Icono negro para máximo contraste sobre el fondo azul-verde */
+}
+
+/* Botón primario en modo claro (Texto negro para contraste premium sobre fondo azul) */
+html.light-theme .btn-primary {
+    color: #000000 !important;
+}
+html.light-theme .btn-primary i,
+html.light-theme .btn-primary svg {
+    color: #000000 !important;
+}
+
+/* Botones de bypass en modo claro */
+html.light-theme #btn-admin-bypass,
+html.light-theme #btn-player-bypass {
+    color: var(--text-main) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+}
+html.light-theme #btn-admin-bypass:hover,
+html.light-theme #btn-player-bypass:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Forzar colores de alto contraste para textos celestes/morados/amarillos claros en modo claro */
+html.light-theme #app-content [style*="color: #a39eff"],
+html.light-theme #app-content [style*="color:#a39eff"],
+html.light-theme #app-content [style*="color: #a39eff;"],
+html.light-theme #app-content [style*="color:#a39eff;"] {
+    color: #4f46e5 !important; /* Morado/índigo oscuro */
+}
+
+html.light-theme #app-content [style*="color: #60a5fa"],
+html.light-theme #app-content [style*="color:#60a5fa"],
+html.light-theme #app-content [style*="color: #60a5fa;"],
+html.light-theme #app-content [style*="color:#60a5fa;"] {
+    color: #1e3a8a !important; /* Azul marino oscuro */
+}
+
+html.light-theme #app-content [style*="color: #fbbf24"],
+html.light-theme #app-content [style*="color:#fbbf24"],
+html.light-theme #app-content [style*="color: #fbbf24;"],
+html.light-theme #app-content [style*="color:#fbbf24;"] {
+    color: #b45309 !important; /* Ámbar oscuro */
+}
+
+/* Insignias de Stripe en modo claro */
+html.light-theme .badge-open[style*="background: rgba(99, 91, 255"],
+html.light-theme .badge-open[style*="background:rgba(99, 91, 255"] {
+    background: #e0e7ff !important;
+    color: #4338ca !important;
+    border-color: #c7d2fe !important;
+}
+
+/* Forzar texto oscuro en elementos con estilos en línea de color blanco en modo claro (fuera de tarjetas oscuras) */
+html.light-theme [style*="color: #ffffff"]:not(.badge):not(.btn),
+html.light-theme [style*="color:#ffffff"]:not(.badge):not(.btn),
+html.light-theme [style*="color: #ffffff;"]:not(.badge):not(.btn),
+html.light-theme [style*="color:#ffffff;"]:not(.badge):not(.btn),
+html.light-theme [style*="color: #fff"]:not(.badge):not(.btn),
+html.light-theme [style*="color:#fff"]:not(.badge):not(.btn),
+html.light-theme [style*="color: #fff;"]:not(.badge):not(.btn),
+html.light-theme [style*="color:#fff;"]:not(.badge):not(.btn),
+html.light-theme [style*="color: white"]:not(.badge):not(.btn),
+html.light-theme [style*="color:white"]:not(.badge):not(.btn),
+html.light-theme [style*="color: white;"]:not(.badge):not(.btn),
+html.light-theme [style*="color:white;"]:not(.badge):not(.btn) {
+    color: var(--text-main) !important;
+}
+
+/* Asegurar que dentro de las tarjetas oscuras de torneos y la tarjeta de crédito el texto siga siendo claro */
+html.light-theme .tournament-card [style*="color: #ffffff"],
+html.light-theme .tournament-card [style*="color:#ffffff"],
+html.light-theme .tournament-card [style*="color: #ffffff;"],
+html.light-theme .tournament-card [style*="color:#ffffff;"],
+html.light-theme .tournament-card [style*="color: #fff"],
+html.light-theme .tournament-card [style*="color:#fff"],
+html.light-theme .tournament-card [style*="color: #fff;"],
+html.light-theme .tournament-card [style*="color:#fff;"],
+html.light-theme .tournament-card [style*="color: white"],
+html.light-theme .tournament-card [style*="color:white"],
+html.light-theme .tournament-card [style*="color: white;"],
+html.light-theme .tournament-card [style*="color:white;"],
+html.light-theme .credit-card-3d [style*="color: #ffffff"],
+html.light-theme .credit-card-3d [style*="color:#ffffff"],
+html.light-theme .credit-card-3d [style*="color: #ffffff;"],
+html.light-theme .credit-card-3d [style*="color:#ffffff;"],
+html.light-theme .credit-card-3d [style*="color: #fff"],
+html.light-theme .credit-card-3d [style*="color:#fff"],
+html.light-theme .credit-card-3d [style*="color: #fff;"],
+html.light-theme .credit-card-3d [style*="color:#fff;"],
+html.light-theme .credit-card-3d [style*="color: white"],
+html.light-theme .credit-card-3d [style*="color:white"],
+html.light-theme .credit-card-3d [style*="color: white;"],
+html.light-theme .credit-card-3d [style*="color:white;"] {
+    color: #ffffff !important;
+}
+
+/* Forzar que el valor de detalles clave en el sidebar sea negro en modo claro, excepto la cuota en azul */
+html.light-theme .t-info-value {
+    color: #000000 !important;
+}
+html.light-theme .t-info-value[style*="color: var(--color-primary)"],
+html.light-theme .t-info-value[style*="color:var(--color-primary)"] {
+    color: var(--color-primary) !important;
+}
+

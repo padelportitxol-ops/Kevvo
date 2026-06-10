@@ -1,0 +1,577 @@
+/* css/components.css - Reusable UI Components */
+
+/* Tarjeta Glassmorphic */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.glass-card:hover {
+    border-color: var(--border-color-hover);
+    box-shadow: var(--shadow-lg);
+}
+
+.glass-card.glow-hover:hover {
+    border-color: rgba(204, 255, 0, 0.25);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+/* Botones Premium */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-headings);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.75rem;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    line-height: 1;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--text-dark);
+    box-shadow: 0 4px 15px rgba(204, 255, 0, 0.25);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 255, 0, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-main);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-color-hover);
+    transform: translateY(-2px);
+}
+
+.btn-stripe {
+    background: var(--color-stripe);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(99, 91, 255, 0.25);
+}
+
+.btn-stripe:hover {
+    background: var(--color-stripe-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 91, 255, 0.4);
+}
+
+.btn-sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+}
+
+.btn-lg {
+    padding: 1rem 2.25rem;
+    font-size: 1.1rem;
+}
+
+.btn i {
+    width: 18px;
+    height: 18px;
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-gold {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-silver {
+    background: rgba(156, 163, 175, 0.15);
+    color: #e5e7eb;
+    border: 1px solid rgba(156, 163, 175, 0.3);
+}
+
+.badge-bronze {
+    background: rgba(180, 83, 9, 0.15);
+    color: #fb923c;
+    border: 1px solid rgba(180, 83, 9, 0.3);
+}
+
+.badge-open {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-full {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-input, .form-select, .form-textarea {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: all var(--transition-fast);
+    width: 100%;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.1);
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.form-select option {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+}
+
+/* Modales y Drawer de Stripe */
+.checkout-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(5, 7, 12, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.checkout-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.checkout-drawer {
+    width: 100%;
+    max-width: 520px;
+    height: 100%;
+    background: var(--bg-dark);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform var(--transition-normal) cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+}
+
+.checkout-overlay.active .checkout-drawer {
+    transform: translateX(0);
+}
+
+.checkout-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkout-header-logo span {
+    font-family: var(--font-headings);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #635bff;
+}
+
+.checkout-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.checkout-close-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+}
+
+.checkout-body {
+    padding: 2rem;
+    flex: 1;
+}
+
+/* Tarjeta de Crédito 3D Interactiva */
+.card-container {
+    perspective: 1000px;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 2rem;
+}
+
+.credit-card-3d {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.credit-card-3d.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card-front {
+    background: linear-gradient(135deg, #1e293b, #0f172a, #3b82f6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-back {
+    background: linear-gradient(135deg, #0f172a, #1e293b, #635bff);
+    transform: rotateY(180deg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: flex-start;
+    gap: 1.5rem;
+}
+
+.card-brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-chip {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    border-radius: 6px;
+    position: relative;
+}
+
+.card-chip::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.card-brand-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.card-number-display {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    font-family: monospace;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    margin: 1.5rem 0;
+}
+
+.card-details-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-holder-col, .card-expiry-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+.card-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+/* Lado trasero de la tarjeta */
+.card-magnetic-strip {
+    background: #000000;
+    height: 40px;
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+}
+
+.card-cvc-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    padding-right: 1rem;
+}
+
+.card-cvc-strip {
+    background: #ffffff;
+    height: 35px;
+    width: 80%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.75rem;
+    color: #000000;
+    font-family: monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Pantalla de éxito en Checkout */
+.checkout-success-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 0;
+    animation: fadeInEffect var(--transition-normal) forwards;
+}
+
+.success-icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid var(--color-success);
+    color: var(--color-success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.success-icon-circle i {
+    width: 40px;
+    height: 40px;
+    stroke-width: 3;
+    animation: scaleCheck 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleCheck {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+.receipt-box {
+    width: 100%;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: left;
+    font-family: monospace;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.receipt-row.total {
+    border-top: 1px dashed var(--border-color);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 2000;
+    max-width: 400px;
+}
+
+.toast {
+    background: rgba(13, 18, 31, 0.9);
+    backdrop-filter: blur(12px);
+    border-left: 4px solid var(--color-primary);
+    border-top: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 4px var(--radius-sm) var(--radius-sm) 4px;
+    color: var(--text-main);
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transform: translateX(120%);
+    animation: slideInToast 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInToast {
+    to { transform: translateX(0); }
+}
+
+html.light-theme .toast {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.toast.removing {
+    animation: slideOutToast 0.3s forwards;
+}
+
+@keyframes slideOutToast {
+    to { transform: translateX(120%); opacity: 0; }
+}
+
+.toast i {
+    flex-shrink: 0;
+}
+
+.toast-success { border-left-color: var(--color-success); }
+.toast-success i { color: var(--color-success); }
+
+.toast-error { border-left-color: var(--color-error); }
+.toast-error i { color: var(--color-error); }
+
+.toast-warning { border-left-color: var(--color-warning); }
+.toast-warning i { color: var(--color-warning); }
+
+.toast-info { border-left-color: var(--color-info); }
+.toast-info i { color: var(--color-info); }
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .checkout-drawer {
+        max-width: 100%;
+    }
+    
+    .card-container {
+        height: 170px;
+    }
+    
+    .card-number-display {
+        font-size: 1.1rem;
+        margin: 1rem 0;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .toast-container {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: none;
+    }
+}

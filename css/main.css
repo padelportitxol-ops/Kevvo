@@ -1,0 +1,476 @@
+/* css/main.css - Padelify Global Styles & Design Tokens */
+
+:root {
+    /* Paleta de Colores (Modo Oscuro Premium) */
+    --bg-dark: #090d16;
+    --bg-darker: #05070c;
+    --bg-card: rgba(17, 24, 39, 0.75);
+    --bg-card-hover: rgba(26, 36, 57, 0.85);
+    
+    /* Neon Padel Green */
+    --color-primary: #ccff00;
+    --color-primary-hover: #b3e600;
+    --color-primary-rgb: 204, 255, 0;
+    
+    /* Stripe Purple */
+    --color-stripe: #635bff;
+    --color-stripe-hover: #5048e5;
+    --color-stripe-rgb: 99, 91, 255;
+    
+    /* Colores del Estado */
+    --color-success: #10b981;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+
+    /* Escala de grises y texto */
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --text-dark: #111827;
+    
+    /* Bordes y Sombras */
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-color-hover: rgba(255, 255, 255, 0.15);
+    --border-glow: rgba(204, 255, 0, 0.2);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 25px rgba(204, 255, 0, 0.15);
+    
+    /* Tipografía */
+    --font-headings: 'Outfit', 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Transiciones */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Variables de Tema Claro (Modo Día: Blanco y Azul) */
+html.light-theme {
+    --bg-dark: #f0f2f5;
+    --bg-darker: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-card-hover: rgba(255, 255, 255, 0.95);
+    
+    /* Azul Premium en lugar de Neon Green */
+    --color-primary: #3b82f6;
+    --color-primary-hover: #2563eb;
+    --color-primary-rgb: 59, 130, 246;
+
+    /* Escala de grises y texto */
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --text-dark: #000000; /* Texto negro sobre fondo azul de botones/menús en modo claro */
+    
+    /* Bordes y Sombras */
+    --border-color: rgba(0, 0, 0, 0.15); /* Bordes más marcados en modo claro */
+    --border-color-hover: rgba(0, 0, 0, 0.25);
+    --border-glow: rgba(59, 130, 246, 0.15);
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.08);
+}
+
+/* Botón de Alternancia de Tema (Día / Noche) */
+.theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    padding: 0;
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+.theme-toggle-btn i,
+.theme-toggle-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-normal);
+}
+
+/* Ocultar iconos de forma inteligente según el tema */
+html.light-theme .theme-toggle-btn .lucide-sun,
+html:not(.light-theme) .theme-toggle-btn .lucide-moon {
+    display: none !important;
+}
+
+/* Reset y Estilos Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-darker);
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Efectos de Brillo en el Fondo */
+.bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(204, 255, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    top: -100px;
+    right: -100px;
+    z-index: 0;
+    pointer-events: none;
+    animation: pulseGlow 15s infinite alternate ease-in-out;
+}
+
+.bg-glow-secondary {
+    background: radial-gradient(circle, rgba(99, 91, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    top: 50%;
+    left: -200px;
+    width: 800px;
+    height: 800px;
+    animation: pulseGlow 20s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(50px, 50px) scale(1.15);
+    }
+}
+
+/* Estructura Principal */
+.app-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Cabecera */
+.app-header {
+    background: rgba(9, 13, 22, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logotipo */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: var(--font-headings);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+    transition: transform var(--transition-fast);
+}
+
+.logo-link:hover {
+    transform: scale(1.02);
+}
+
+.logo-icon {
+    background: linear-gradient(135deg, var(--color-primary), #99ff00);
+    color: var(--text-dark);
+    padding: 0.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(204, 255, 0, 0.3);
+}
+
+.logo-icon i {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5;
+}
+
+.logo-highlight {
+    color: var(--color-primary);
+    text-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+}
+
+/* Navegación */
+.main-nav {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.35rem;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all var(--transition-fast);
+}
+
+.nav-item i {
+    width: 16px;
+    height: 16px;
+}
+
+.nav-item:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    color: var(--text-dark);
+    background: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(204, 255, 0, 0.2);
+}
+
+/* Contenido Principal */
+#app-content {
+    flex: 1;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    position: relative;
+}
+
+/* Animación de Entrada de Vista (Fade-in) */
+.fade-in {
+    animation: fadeInEffect var(--transition-normal) forwards;
+}
+
+@keyframes fadeInEffect {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cargador Inicial */
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 1.5rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    border-top-color: var(--color-primary);
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.1);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Pie de Página */
+.app-footer {
+    background: var(--bg-darker);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 2rem 2rem 2rem;
+    margin-top: auto;
+}
+
+.footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-info {
+    max-width: 400px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-headings);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+}
+
+.footer-logo i {
+    color: var(--color-primary);
+    width: 22px;
+    height: 22px;
+}
+
+.footer-logo span span {
+    color: var(--color-primary);
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-security {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+.security-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.security-badge i {
+    color: var(--color-success);
+    width: 16px;
+    height: 16px;
+}
+
+.stripe-mock-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stripe-s {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #635bff;
+    letter-spacing: -0.5px;
+}
+
+.partner-badge {
+    background: rgba(99, 91, 255, 0.15);
+    color: #a39eff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(99, 91, 255, 0.3);
+}
+
+.footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1rem;
+    }
+    
+    .main-nav {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .header-actions {
+        display: none; /* Se accede por nav-item */
+    }
+    
+    #app-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .footer-security {
+        align-items: flex-start;
+    }
+}

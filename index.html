@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padelify - Gestión de Torneos de Pádel Premium</title>
+    <meta name="description" content="Organiza, inscríbete y gestiona tus torneos de pádel con pasarela de pagos segura tipo Stripe y cuadros de eliminatorias en tiempo real.">
+    
+    <!-- Cache-Control Meta Tags -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS de la aplicación -->
+    <link rel="stylesheet" href="css/main.css?v=3.0">
+    <link rel="stylesheet" href="css/components.css?v=3.0">
+    <link rel="stylesheet" href="css/views.css?v=3.0">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow bg-glow-secondary"></div>
+
+    <div class="app-container">
+        <!-- Cabecera Premium -->
+        <header class="app-header">
+            <div class="header-inner">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <a href="#/" class="logo-link" id="nav-logo" style="margin: 0;">
+                        <div class="logo-icon">
+                            <i data-lucide="dribbble"></i>
+                        </div>
+                        <span class="logo-text">Padel<span class="logo-highlight">ify</span></span>
+                    </a>
+                    <button class="theme-toggle-btn" id="header-theme-toggle" title="Cambiar tema" style="margin: 0;">
+                        <i data-lucide="sun"></i>
+                        <i data-lucide="moon"></i>
+                    </button>
+                </div>
+
+                <nav class="main-nav">
+                    <a href="#/" class="nav-item active" id="nav-home">
+                        <i data-lucide="trophy"></i>
+                        <span>Torneos</span>
+                    </a>
+                    <a href="#/rankings" class="nav-item" id="nav-rankings">
+                        <i data-lucide="award"></i>
+                        <span>Rankings</span>
+                    </a>
+                    <a href="#/clasificacion" class="nav-item" id="nav-classification">
+                        <i data-lucide="bar-chart-2"></i>
+                        <span>Clasificación</span>
+                    </a>
+                </nav>
+
+                <div class="header-actions" id="header-actions-container">
+                    <a href="#/player/dashboard" class="btn btn-secondary btn-sm" id="btn-header-player-portal">
+                        <i data-lucide="user"></i>
+                        <span>Panel del Deportista</span>
+                    </a>
+                    <a href="#/admin/dashboard" class="btn btn-primary btn-sm" id="btn-header-login" style="margin-left: 0.5rem;">
+                        <i data-lucide="shield"></i>
+                        <span>Panel de Club</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenedor de Vistas SPA -->
+        <main id="app-content" class="fade-in">
+            <div class="loading-screen">
+                <div class="spinner"></div>
+                <p>Cargando Padelify...</p>
+            </div>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="app-footer">
+            <div class="footer-inner">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <i data-lucide="dribbble"></i>
+                        <span>Padel<span>ify</span></span>
+                    </div>
+                    <p class="footer-tagline">La plataforma definitiva para la gestión y competición de torneos de pádel.</p>
+                </div>
+                <div class="footer-security">
+                    <span class="security-badge">
+                        <i data-lucide="shield-check"></i>
+                        Pagos seguros procesados con tecnología Stripe
+                    </span>
+                    <div class="stripe-mock-logo">
+                        <span class="stripe-s">stripe</span>
+                        <span class="partner-badge">Partner</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Padelify. Todos los derechos reservados. Diseñado para alto rendimiento.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Contenedor de Notificaciones -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script type="module" src="js/app.js?v=3.1"></script>
+</body>
+</html>
